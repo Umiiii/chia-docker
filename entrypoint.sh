@@ -2,7 +2,7 @@ cd /chia-blockchain
 
 . ./activate
 
-chia init
+chia init -c /ca
 
 if [[ ${keys} == "generate" ]]; then
   echo "to use your own keys pass them as a text file -v /path/to/keyfile:/path/in/container and -e keys=\"/path/in/container\""
@@ -17,7 +17,8 @@ fi
 
 chia plots add -d ${plots_dir}
 
-sed -i 's/localhost/127.0.0.1/g' ~/.chia/mainnet/config/config.yaml
+mv /config.yaml ~/.chia/mainnet/config/config.yaml
+#sed -i 's/localhost/127.0.0.1/g' ~/.chia/mainnet/config/config.yaml
 
 if [[ ${farmer} == 'true' ]]; then
   chia start farmer-only
