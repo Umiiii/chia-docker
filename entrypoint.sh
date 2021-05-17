@@ -2,6 +2,8 @@ cd /chia-blockchain
 
 . ./activate
 
+chia init
+
 chia init -c /ca
 
 mv /opt/conf/config.yaml ~/.chia/mainnet/config/config.yaml
